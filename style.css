@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+* {
+  font-family: 'Gowun Dodum', sans-serif;
+  color: white;
+}
+
+body {
+  background-color: black;
+}
+
+.main-container {
+  width: 1700px;
+  margin: auto;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+  gap: 50px;
+}
+
+
+.main-nav {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  width: 220px;
+  height: 50px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.nav-item {
+  margin: 30px;
+}
+
+.searchbox {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 1700px;
+  margin-top: 20px;
+  gap: 0 5px;
+}
+
+.box {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.movieimg {
+  width: 100%;
+  display: block;
+}
+
+.explain {
+  height: 350px;
+  overflow-y: scroll;
+  background-color: #141414;
+  padding: 10px;
+}
+
+.explain::-webkit-scrollbar {
+  width: 10px;
+}
+
+.explain::-webkit-scrollbar-thumb {
+  background: rgba(220, 20, 60);
+  border-radius: 10px;
+}
+
+
+.text {
+  font-size: 25px;
+}
+
+.input-box {
+  background-color: inherit;
+  border: 0;
+  font-size: 25px;
+  padding-left: 20px;
+  height: 36px;
+}
+
+.search .input_size .button_size {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-button {
+  border: 0;
+  height: 40px;
+  background-color: darkred;
+  border-radius: 15px;
+  width: 100px;
+  font-size: 12px;
+  color: white;
+}
+
+.logo_size {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.movie-title-box {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-title {
+  font-size: 28px;
+}
+
+.description {
+  font-size: 16px;
+  white-space: pre-wrap;
+}
+
+.rating-box {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  font-size: 18px;
+}
+
+.hidden {
+  display: none;
+}
