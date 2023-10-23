@@ -53,7 +53,6 @@ a {
 
 .box {
   border-radius: 15px;
-  overflow: hidden;
 }
 
 .movieimg {
@@ -66,7 +65,9 @@ a {
   overflow-y: scroll;
   background-color: #141414;
   padding: 10px;
+  text-align: center;
 }
+  
 
  /* 설명이 길때 스크롤바 */
 .explain::-webkit-scrollbar {
@@ -156,5 +157,11 @@ a {
 @media screen and (min-width: 1700px) {
   .main-container {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .main-nav {
+    display: flex;
   }
 }

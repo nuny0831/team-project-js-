@@ -16,9 +16,9 @@ const fetchData = (search) => {
      fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
           .then(response => response.json())
           .then(response => {
-               console.log(response)
+               // console.log(response);
                response.results.forEach((item) => {
-                    console.log(item);
+                    // console.log(item);
                     if (search) {
                          title = item.title.toLowerCase();
                          search = search.toLowerCase();
