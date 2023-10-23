@@ -68,6 +68,7 @@ a {
   padding: 10px;
 }
 
+ /* 설명이 길때 스크롤바 */
 .explain::-webkit-scrollbar {
   width: 10px;
 }
@@ -90,7 +91,9 @@ a {
   height: 36px;
 }
 
-.search .input_size .button_size {
+.search 
+.input_size 
+.button_size {
   display: flex;
   flex-direction: column;
 }
@@ -132,6 +135,26 @@ a {
   font-size: 18px;
 }
 
-.hidden {
-  display: none;
+/* 반응형 그리드 */
+@media screen and (min-width: 10px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    width: auto;
+    height: auto;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  .main-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    width: auto;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .main-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
