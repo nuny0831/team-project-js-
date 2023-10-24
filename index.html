@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPARTA MOVIE</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SPARTA MOVIE</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <body>
+    <header class="main-nav">
+      <div class="logo_size">
+        <img class="logo" src="SPARTAMOVIE.png" alt="spartaMovie Logo" />
+      </div>
+      <div class="nav-item"><a href="#">홈</a></div>
+      <div class="nav-item"><a href="#">코미디</a></div>
+      <div class="nav-item"><a href="#">로맨스</a></div>
+      <div class="nav-item"><a href="#">스릴러</a></div>
+      <div class="nav-item"><a href="#">SF & 판타지</a></div>
+    </header>
+    <div class="searchbox">
+      <div class="search">
+        <div class="text">영화검색</div>
+      </div>
+      <div class="input_size">
+        <input
+          id="search-input"
+          class="input-box"
+          type="text"
+          placeholder="제목, 사람, 장르"
+        />
+      </div>
+      <div class="button_size">
+        <button id="search-button" type="button" class="search-button">
+          검색
+        </button>
+      </div>
+    </div>
 
-<body>
-  <header class="main-nav">
-    <div class="logo_size">
-      <img class="logo" src="SPARTAMOVIE.png" alt="spartaMovie Logo">
-    </div>
-    <div class="nav-item"><a href="#">홈</a></div>
-    <div class="nav-item"><a href="#">코미디</a></div>
-    <div class="nav-item"><a href="#">로맨스</a></div>
-    <div class="nav-item"><a href="#">스릴러</a></div>
-    <div class="nav-item"><a href="#">SF & 판타지</a></div>
-  </header>
-  <div class="searchbox">
-    <div class="search">
-      <div class="text">영화검색</div>
-    </div>
-    <div class="input_size">
-      <input id="search-input" class="input-box" type="text" placeholder="제목, 사람, 장르" />
-    </div>
-    <div class="button_size">
-      <button id="search-button" type="button" class="search-button">검색</button>
-    </div>
-  </div>
-
-  <div id="main-container" class="main-container">
-    <div id="base-card" class="box">
-      <img class="movieimg" src="" alt="" />
-      <div class="explain">
-        <div class="movie-title-box">
-          <div class="movie-title"></div>
-        </div>
-        <div class="rating-box">
-          <div class="rating"></div>
-        </div>
-        <div class="description">
+    <div id="main-container" class="main-container">
+      <div id="base-card" class="box">
+        <img class="movieimg" src="" alt="" />
+        <div class="explain">
+          <div class="movie-title-box">
+            <div class="movie-title"></div>
+          </div>
+          <div class="rating-box">
+            <div class="rating"></div>
+          </div>
+          <div class="description"></div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="./javascript.js"></script>
-</body>
+    <script src="./javascript.js"></script>
+  </body>
+</html>
