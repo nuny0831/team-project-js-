@@ -1,5 +1,7 @@
+// tmdb
 const prePath = "https://image.tmdb.org/t/p/w500";
 
+// The Movie DB API 키
 const options = {
   method: "GET",
   headers: {
@@ -9,6 +11,7 @@ const options = {
   },
 };
 
+// DOM 요소 가져오기
 const mainContainer = document.querySelector("#main-container");
 const baseCard = document.querySelector("#base-card");
 
@@ -37,6 +40,7 @@ const fetchData = (search) => {
     .catch((err) => console.error(err));
 };
 
+// 영화 목록을 렌더링하는 함수
 const createCards = (item) => {
   const newCard = baseCard.cloneNode(true);
   newCard.querySelector(".movieimg").src = prePath + item.backdrop_path;
@@ -55,4 +59,5 @@ function clickSearch() {
 }
 document.querySelector("#search-button").onclick = clickSearch;
 
+// 초기 영화 목록 불러오기
 fetchData();
