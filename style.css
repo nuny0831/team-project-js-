@@ -59,23 +59,11 @@ a {
 
 .explain {
   height: 350px;
-  /* overflow-y: scroll; */
   background-color: #141414;
   padding: 10px;
   text-align: center;
 }
   
-
- /* 설명이 길때 스크롤바 */
-/* .explain::-webkit-scrollbar {
-  width: 10px;
-}
-
-.explain::-webkit-scrollbar-thumb {
-  background: rgba(220, 20, 60);
-  border-radius: 10px;
-} */
-
 
 .text {
   font-size: 25px;
@@ -162,8 +150,3 @@ a {
   }
 }
 
-@media screen and (max-width: 700px) {
-  .main-nav {
-    display: flex;
-  }
-}
