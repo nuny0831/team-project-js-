@@ -12,6 +12,17 @@ const mainContainer = document.querySelector('#main-container');
 const baseCard = document.querySelector('#base-card');
 const searchButton = document.querySelector('#search-button');
 const modalBody = document.querySelector('#modal-body');
+const summaryOverview = (overview) => {
+     let max = 300; // 표시할 글자수 기준
+     if (overview.length > max) {
+       overview =
+         overview.substr(0, max - 2) +
+         `
+       더보기 ...`;
+     }
+     console.log(max);
+     return overview;
+   };
 const modal = (img, title, overview, voteAverage, voteCount) => {
      return (
           `
@@ -93,7 +104,7 @@ const createCards = (item) => {
      newCard.querySelector('.movieimg').src = prePath + item.backdrop_path;
      newCard.querySelector('.movie-title').append(item.title);
      newCard.querySelector('.rating').append(`평점 ${item.vote_average} (${item.vote_count.toLocaleString()})`);
-     newCard.querySelector('.description').append(item.overview);
+     newCard.querySelector('.description').append(summaryOverview(item.overview));
      newCard.onclick = clickCard;
      mainContainer.append(newCard);
 }
