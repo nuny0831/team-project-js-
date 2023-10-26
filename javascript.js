@@ -55,19 +55,20 @@ function clickSearch() {
 }
 document.querySelector("#search-button").onclick = clickSearch;
 
-// // 영화 설명 문자열 줄이기 (...)
+// 영화 설명 문자열 줄이기 (...)
 
-// const summaryOverview = (overview) => {
-//   let max = 300; // 표시할 글자수 기준
-//   if (overview.length > max) {
-//     overview =
-//       overview.substr(0, max - 2) +
-//       `
-//     더보기 ...`;
-//   }
-//   console.log(max);
-//   return overview;
-// };
+const summaryOverview = (overview) => {
+  let max = 300; // 표시할 글자수 기준
+  if (overview.length > max) {
+    overview =
+      overview.substr(0, max - 2) +
+      `
+
+    더보기 ...`;
+  }
+  console.log(max);
+  return overview;
+};
 
 // // 비밀번호 숫자 4자리
 // function validatePassword() {
@@ -88,6 +89,13 @@ document.querySelector("#search-button").onclick = clickSearch;
 //   } else {
 //     resultDiv.innerHTML = "올바른 비밀번호를 입력해 주시기 바랍니다.";
 //     resultDiv.style.color = "red";
+//   }
+// }
+
+// // 100자 초과 시 작성 안됨
+// function inputCheck(el, maxlength) {
+//   if (el.value.length > maxlength) {
+//     el.value = el.value.substr(0, maxlength);
 //   }
 // }
 
