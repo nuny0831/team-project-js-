@@ -71,26 +71,27 @@ const summaryOverview = (overview) => {
 };
 
 // // 비밀번호 숫자 4자리
-// function validatePassword() {
-//   let newPassword = document.getElementById("newPassword").value;
-//   let confirmPassword = document.getElementById("confirmPassword").value;
-//   let resultDiv = document.getElementById("result");
+function validatePassword() {
+  const newPassword = document.getElementById("newPassword").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+  const resultDiv = document.getElementById("result");
 
-//   let passwordRegex = /^[A-Za-z0-9](?:[~!@#$%^&*()_+=]+){6,12}$/;
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{4}$/;
 
-//   if (passwordRegex.test(newPassword)) {
-//     if (newPassword === confirmPassword) {
-//       resultDiv.innerHTML = "비밀번호가 확인되었습니다.";
-//       resultDiv.style.color = "green";
-//     } else {
-//       resultDiv.innerHTML = "비밀번호가 일치하지 않습니다.";
-//       resultDiv.style.color = "red";
-//     }
-//   } else {
-//     resultDiv.innerHTML = "올바른 비밀번호를 입력해 주시기 바랍니다.";
-//     resultDiv.style.color = "red";
-//   }
-// }
+  if (passwordRegex.test(newPassword)) {
+    if (newPassword === confirmPassword) {
+      resultDiv.innerHTML = "비밀번호가 확인되었습니다.";
+      resultDiv.style.color = "green";
+    } else {
+      resultDiv.innerHTML =
+        "최소 특수문자,대문자,소문자, 숫자 1개를 사용하여 다시 입력해주시기 바랍니다.";
+      resultDiv.style.color = "red";
+    }
+  } else {
+    resultDiv.innerHTML = "올바른 비밀번호 4자리를 입력해주시기 바랍니다.";
+    resultDiv.style.color = "red";
+  }
+}
 
 // // 100자 초과 시 작성 안됨
 // function inputCheck(el, maxlength) {
