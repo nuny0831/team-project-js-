@@ -24,11 +24,13 @@ body {
   flex-direction: row;
   position: sticky;
   top: 0;
+  justify-content: space-between;
 }
 
 .logo {
-  width: 220px;
-  height: 50px;
+  width: 400px;
+  height: 100px;
+  margin-left: 20px;
 }
 
 a {
@@ -37,17 +39,12 @@ a {
   font-weight: bold;
 }
 
-.nav-item {
-  margin: 30px;
-}
 
 .searchbox {
-  height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 1700px;
-  margin-top: 20px;
+  margin-top: 30px;
   gap: 0 5px;
 }
 
@@ -62,21 +59,9 @@ a {
 
 .explain {
   height: 350px;
-  overflow-y: scroll;
   background-color: #141414;
   padding: 10px;
   text-align: center;
-}
-  
-
- /* 설명이 길때 스크롤바 */
-.explain::-webkit-scrollbar {
-  width: 10px;
-}
-
-.explain::-webkit-scrollbar-thumb {
-  background: rgba(220, 20, 60);
-  border-radius: 10px;
 }
 
 
@@ -86,20 +71,21 @@ a {
 
 .input-box {
   background-color: inherit;
-  border: 0;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
   font-size: 25px;
   padding-left: 20px;
   height: 36px;
+  margin: 0 5px 0 5px;
 }
 
-.search 
-.input_size 
-.button_size {
+.search .input_size .button_size {
   display: flex;
   flex-direction: column;
 }
 
-.search-button {
+.search-button,
+.reset-button {
   border: 0;
   height: 40px;
   background-color: darkred;
@@ -108,6 +94,7 @@ a {
   font-size: 12px;
   color: white;
 }
+
 
 .logo_size {
   display: flex;
@@ -118,6 +105,7 @@ a {
 .movie-title-box {
   display: flex;
   justify-content: center;
+  margin: 15px 0 15px 0;
 }
 
 .movie-title {
@@ -125,14 +113,14 @@ a {
 }
 
 .description {
-  font-size: 16px;
+  font-size: 20px;
   white-space: pre-wrap;
 }
 
 .rating-box {
   display: flex;
   justify-content: flex-end;
-  padding-right: 20px;
+  padding-right: 25px;
   font-size: 18px;
 }
 
@@ -160,8 +148,130 @@ a {
   }
 }
 
-@media screen and (max-width: 700px) {
-  .main-nav {
-    display: flex;
-  }
+
+
+/* 최수인 코드 */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&family=Lato&display=swap');
+
+.imgSlider {
+  width: 1840px;
+  height: 400px;
+  background-color: antiquewhite;
+  margin-bottom: 50px;
+  margin-top: 30px;
+  position: relative;
+  opacity: 1.0;
+  background-image: linear-gradient(to right, black, rgb(63, 63, 63) 70%, rgb(199, 199, 199));
+}
+
+.imgText {
+  width: 40%;
+  height: 100%;
+  float: left;
+  position: absolute;
+}
+
+.slideImg {
+  width: 70%;
+  height: 100%;
+  background-color: black;
+  float: right;
+  position: relative;
+  background-image: linear-gradient(to right, black, rgb(90, 90, 90) );
+}
+
+.slideImg>ul {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.slideImg>ul>li {
+  list-style: none;
+}
+
+.slideImg>ul>li>img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+
+/*
+.prev {
+  font-size: 30px;
+  font-weight: 900;
+  height: 100%;
+  top: 40%;
+  padding-left: 20px;
+  color: red;
+  font-style: 'DM Sans', sans-serif;
+  font-style: 'Lato', sans-serif;
+  background-color: inherit;
+  border: none;
+  float: left;
+}
+.next {
+  font-size: 30px;
+  font-weight: 900;
+  height: 100%;
+  top: 40%;
+  padding-right: 20px;
+  color: red;
+  font-style: 'DM Sans', sans-serif;
+  font-style: 'Lato', sans-serif;
+  background-color: inherit;
+  border: none;
+  float: right;
+}
+*/
+
+.imgTitle {
+  height: 100%;
+  margin-top: 60px;
+  margin-left: 100px;
+  overflow: hidden;
+}
+
+.imgTitle > h3 {
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding: 0;
+  color: white;
+}
+
+.imgTitle > h3 > strong {
+  font-size: 20px;
+  color: red;
+}
+
+.imgTitle > h3 > area {
+  font-size: 10px;
+  padding: 0;
+  color: white;
+}
+
+.imgTitle > h1 {
+  font-size: 50px;
+  margin: 0;
+}
+
+.imgTitle>p {
+  font-size: 20px;
+}
+
+.imgTitle>button {
+  width: 300px;
+  height: 70px;
+  background-color: white;
+  color : black;
+  border-radius: 10px;
+  border: none;
+  display: inline-block;
+  font-size: 30px;
+  text-align: center;
+  line-height: 1.5em;
+  margin-top: 10px;
 }
