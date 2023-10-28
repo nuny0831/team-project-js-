@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+
+* {
+  font-family: "Gowun Dodum", sans-serif;
+  color: white;
+}
+
+.mainModule {
+  width: 850px;
+  margin: auto;
+}
+
+.module {
+  overflow-y: scroll;
+  border-radius: 30px;
+  background-color: #272525;
+  height: 95vh;
+  margin-top: 2.5vh;
+}
+
+.module::-webkit-scrollbar {
+  width: 10px;
+}
+
+.module::-webkit-scrollbar-thumb {
+  background: rgba(220, 20, 60);
+  border-radius: 10px;
+}
+
+.module-head {
+  display: flex;
+}
+
+.moduleLt {
+  height: 400px;
+  margin: 50px 0 40px 50px;
+  width: 400px;
+}
+
+.moduleRt {
+  height: 400px;
+  width: 400px;
+  margin: 50px 10px 0 5px;
+}
+
+.moduleImg {
+  /* height: 450px; */
+  width: 100%;
+  height: 100%;
+}
+
+.moduleTitle-box,
+.moduleDescription-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.moduleTitle {
+  font-size: 30px;
+  margin-left: 30px;
+}
+
+.moduleRating-box {
+  margin: 10px 0 30px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.moduleDescription {
+  margin-left: 30px;
+}
+
+.module-bottom {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin: 0 0 15px 30px;
+}
+
+.comment-input-box {
+  border-bottom: 1px solid white;
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  bottom: 3px;
+}
+
+.review-box {
+  height: 600px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.input-name,
+.input-password {
+  background-color: inherit;
+  border: 0;
+  font-size: 15px;
+  width: 55px;
+}
+
+.input {
+  background-color: inherit;
+  border: 0;
+  font-size: 15px;
+  width: 750px;
+}
+
+.send-button {
+  border: 0;
+  height: 40px;
+  margin: 10px 0 5px 0;
+  background-color: darkred;
+  border-radius: 15px;
+  width: 200px;
+  font-size: 15px;
+  color: white;
+}
+
+.comment {
+  display: flex;
+  flex-direction: row;
+}
+
+.userinfo {
+  height: 50px;
+  display: flex;
+}
+
+.name {
+  font-size: 20px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review {
+  font-size: 20px;
+  width: 730px;
+  line-height: 50px;
+}
+
+#modalContainer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#modalContent {
+  position: absolute;
+}
+
+#modalContainer.hidden {
+  display: none;
+}

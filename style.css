@@ -2,7 +2,7 @@
 
 * {
   font-family: "Gowun Dodum", sans-serif;
-  color: red;
+  color: white;
 }
 
 body {
@@ -23,11 +23,13 @@ body {
   flex-direction: row;
   position: sticky;
   top: 0;
+  justify-content: space-between;
 }
 
 .logo {
-  width: 220px;
-  height: 50px;
+  width: 400px;
+  height: 100px;
+  margin-left: 20px;
 }
 
 a {
@@ -36,17 +38,11 @@ a {
   font-weight: bold;
 }
 
-.nav-item {
-  margin: 30px;
-}
-
 .searchbox {
-  height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 1400px;
-  margin-top: 20px;
+  margin-top: 30px;
   gap: 0 5px;
 }
 
@@ -61,20 +57,9 @@ a {
 
 .explain {
   height: 350px;
-  overflow-y: scroll;
   background-color: #141414;
   padding: 10px;
   text-align: center;
-}
-
-/* 설명이 길때 스크롤바 */
-.explain::-webkit-scrollbar {
-  width: 10px;
-}
-
-.explain::-webkit-scrollbar-thumb {
-  background: rgba(220, 20, 60);
-  border-radius: 10px;
 }
 
 .text {
@@ -83,10 +68,12 @@ a {
 
 .input-box {
   background-color: inherit;
-  border: 0;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
   font-size: 25px;
   padding-left: 20px;
   height: 36px;
+  margin: 0 5px 0 5px;
 }
 
 .search .input_size .button_size {
@@ -94,7 +81,8 @@ a {
   flex-direction: column;
 }
 
-.search-button {
+.search-button,
+.reset-button {
   border: 0;
   height: 40px;
   background-color: darkred;
@@ -113,6 +101,7 @@ a {
 .movie-title-box {
   display: flex;
   justify-content: center;
+  margin: 15px 0 15px 0;
 }
 
 .movie-title {
@@ -120,14 +109,14 @@ a {
 }
 
 .description {
-  font-size: 16px;
+  font-size: 20px;
   white-space: pre-wrap;
 }
 
 .rating-box {
   display: flex;
   justify-content: flex-end;
-  padding-right: 20px;
+  padding-right: 25px;
   font-size: 18px;
 }
 
@@ -151,11 +140,5 @@ a {
 @media screen and (min-width: 1700px) {
   .main-container {
     grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .main-nav {
-    display: flex;
   }
 }

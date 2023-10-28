@@ -5,71 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SPARTA MOVIE</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="detail.css" />
   </head>
+
   <body>
     <header class="main-nav">
       <div class="logo_size">
-        <img
-          src="../assets/SPARTAMOVIE.png"
-          class="logo"
-          alt="spartaMovie Logo"
-        />
+        <a href="./index.html">
+          <img
+            class="logo"
+            src="../assets/SPARTAMOVIE.png"
+            alt="spartaMovie Logo"
+          />
+        </a>
       </div>
-      <div class="nav-item"><a href="#">홈</a></div>
-      <div class="nav-item"><a href="#">코미디</a></div>
-      <div class="nav-item"><a href="#">로맨스</a></div>
-      <div class="nav-item"><a href="#">스릴러</a></div>
-      <div class="nav-item"><a href="#">SF & 판타지</a></div>
+      <div class="searchbox">
+        <div class="search">
+          <div class="text">검색</div>
+        </div>
+        <div class="input_size">
+          <input
+            id="search-input"
+            class="input-box"
+            type="text"
+            placeholder="제목, 사람, 장르"
+          />
+        </div>
+        <div class="button_size">
+          <button id="search-button" type="button" class="search-button">
+            검색
+          </button>
+        </div>
+        <div class="button_size">
+          <a href="/index.html">
+            <button type="button" class="reset-button">초기화</button>
+          </a>
+        </div>
+      </div>
     </header>
-    <div class="searchbox">
-      <div class="search">
-        <div class="text">영화검색</div>
-      </div>
-      <div class="input_size">
-        <input
-          id="search-input"
-          class="input-box"
-          type="text"
-          placeholder="제목, 사람, 장르"
-        />
-      </div>
-      <div class="button_size">
-        <button id="search-button" type="button" class="search-button">
-          검색
-        </button>
-      </div>
-      <p>새로운 비밀번호를 입력하세요.</p>
-      <input
-        type="password"
-        maxlength="4"
-        id="newPassword"
-        placeholder="새로운 비밀번호 입력"
-      />
-      <br /><br />
-      <fomr>
-        <input
-          type="password"
-          maxlength="4"
-          id="confirmPassword"
-          placeholder="비밀번호 확인"
-        />
-        <br /><br />
-        <button onclick="validatePassword()">확인</button>
-        <div id="result"></div>
-      </fomr>
-
-      <!-- 100자 초과 시 작성 안됨
-    <input
-      type="text"
-      oninput="inputCheck(this, 100)"
-      placeholder="후기를 작성해 주세요."
-    />
-    <button>등록</button> -->
-    </div>
-
     <div id="main-container" class="main-container">
       <div id="base-card" class="box">
-        <img class="movieimg" src="" alt="" />
+        <img class="movieimg" />
         <div class="explain">
           <div class="movie-title-box">
             <div class="movie-title"></div>
@@ -81,7 +57,54 @@
         </div>
       </div>
     </div>
-
+    <div id="modal-body" id="modalContainer" class="mainModule"></div>
+    <!-- <div id="modalContent" class="module"> // 뭔가 활용할 수 있는게 없을 듯 하여 주석 처리 하였음 / 똑같은 내용이 자바스크립트에도 있음!
+        <div class="module-head">
+          <div class="moduleLt">
+            <img class="moduleImg" />
+          </div>
+          <div class="moduleRt">
+            <div class="moduleTitle-box">
+              <div class="moduleTitle"></div>
+            </div>
+            <div class="moduleRating-box">
+              <div class="moduleRating"></div>
+            </div>
+            <div class="moduleDescription-box">
+              <div class="moduleDescription"></div>
+            </div>
+          </div>
+        </div>
+        <div class="module-bottom">
+          <div class="review-box">
+            <div class="comment">
+              <div class="userinfo">
+                <div class="name">name</div>
+              </div>
+              <div class="review">리뷰 작성 test</div>
+              <div class="datebox">
+                <div clas="date"></div>
+              </div>
+            </div>
+          </div>
+          <div class="comment-input-box">
+            <input class="input-name" type="text" placeholder="이름" />
+            <input
+              class="input-password"
+              type="password"
+              placeholder="비밀번호"
+            />
+            <input class="input-password" type="password" placeholder="확인" />
+            <input
+              class="input"
+              type="password"
+              placeholder="여기에 적으세요."
+            />
+            <button type="button" class="send-button">작성하기</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
     <script src="./javascript.js"></script>
   </body>
 </html>
