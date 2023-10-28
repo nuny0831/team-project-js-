@@ -270,7 +270,7 @@ const createCards = (item) => {
     sendButton.addEventListener("click", saveReview);
     const textInput = document.querySelector(".input"); // input 텍스트박스에 이벤트 추가.
     textInput.addEventListener("input", function () {
-      inputCheck(this, 100);
+      inputCheck(this, 100); // 100 = 두번째 인자값이 10이면 10자 제한, 100이면 100자 제한
     });
   };
 
