@@ -19,8 +19,8 @@ const summaryOverview = (overview) => {
   if (overview.length > max) {
     overview =
       overview.substr(0, max - 2) +
-      `
-       더보기 ...`;
+      `...
+       더보기`;
   }
   console.log(max);
   return overview;
