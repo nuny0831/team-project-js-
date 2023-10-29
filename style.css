@@ -150,3 +150,19 @@ a {
   }
 }
 
+ #page-button-box > button{
+  color: white;
+  background-color: black;
+  margin: 20px 0 10px 0;
+  padding-left: 15px;
+  font-size: 25px;
+  border: 0;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.page-box {
+  display: flex;
+  justify-content: center;
+}
+
