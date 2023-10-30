@@ -198,8 +198,8 @@ a {
   position: absolute;
 }
 
-/*
-.prev {
+
+/* .prev {
   font-size: 30px;
   font-weight: 900;
   height: 100%;
@@ -224,8 +224,8 @@ a {
   background-color: inherit;
   border: none;
   float: right;
-}
-*/
+} */
+
 
 .imgTitle {
   height: 100%;
@@ -262,7 +262,7 @@ a {
   font-size: 20px;
 }
 
-.imgTitle>button {
+.imgTitle > button {
   width: 300px;
   height: 70px;
   background-color: white;

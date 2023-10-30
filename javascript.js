@@ -123,3 +123,10 @@ searchButton.onclick = clickSearch;
 modalBody.onclick = closeModal;
 fetchData();
 
+
+const viewImg = document.querySelector('imgTitle')
+console.log(viewImg)
+
+function showMovie () {
+
+}
