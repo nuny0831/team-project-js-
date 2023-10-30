@@ -13,72 +13,74 @@ const mainContainer = document.querySelector("#main-container");
 const baseCard = document.querySelector("#base-card");
 const searchButton = document.querySelector("#search-button");
 const modalBody = document.querySelector("#modal-body");
-// 영화 설명 문자열 줄이기 (...)
+const pageButtonBox = document.querySelector("#page-button-box");
 const summaryOverview = (overview) => {
-  let max = 200; // 표시할 글자수 기준
+  let max = 200;
   if (overview.length > max) {
     overview =
       overview.substr(0, max - 2) +
       `...
        더보기`;
   }
-  console.log(max);
+  // console.log(max);
   return overview;
 };
-
 const modal = (img, title, overview, voteAverage, voteCount) => {
   return `
-<div id="modalContainer" class="mainModule">
-    <div id="modalContent" class="module">
-      <div class="module-head">
-        <div class="moduleLt">
-          <img class="moduleImg"
-            src="${prePath + img}" />
-        </div>
-        <div class="moduleRt">
-          <div class="moduleTitle-box">
-            <div class="moduleTitle">${title}</div>
+    <div id="modalContainer" class="mainModule">
+      <div id="modalContent" class="module">
+        <div class="module-head">
+          <div class="moduleLt">
+            <img class="moduleImg"
+              src="${prePath + img}" />
           </div>
-          <div class="moduleRating-box">
-            <div class="moduleRating">평점 ${voteAverage} (${voteCount.toLocaleString()})</div>
-          </div>
-          <div class="moduleDescription-box">
-            <div class="moduleDescription">
-            ${overview}
+          <div class="moduleRt">
+            <div class="moduleTitle-box">
+              <div class="moduleTitle">${title}</div>
+            </div>
+            <div class="moduleRating-box">
+              <div class="moduleRating">평점 ${voteAverage} (${voteCount.toLocaleString()})</div>
+            </div>
+            <div class="moduleDescription-box">
+              <div class="moduleDescription">
+              ${overview}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="module-bottom">
-        <div class="review-box">
-          <div class="comment">
-            <div class="userinfo">
-              <div class="name">name</div>
-            </div>
-            <div class="review">리뷰 작성 test</div>
-            <div class="datebox">
-              <div clas="date"> </div>
+        <div class="module-bottom">
+          <div class="review-box">
+            <div class="comment">
+              <div class="userinfo">
+                <div class="name"></div>
+              </div>
+              <div class="review"></div>
+              <div class="datebox">
+                <div clas="date"> </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="comment-input-box">
-          <input class="input-name" type="text" placeholder="이름" />
-          <input class="input-password" maxlength="4"  type="password" placeholder="비밀번호" />
-          <input class="input-password" maxlength="4" type="password" placeholder="확인" />
-          <input class="input" type="text" oninput="inputCheck(this, 100)" placeholder="여기에 적으세요." />
-          <button type="button" class="send-button">작성하기</button>
+          <div class="comment-input-box">
+            <input class="input-name" type="text" placeholder="이름" />
+            <input class="input-password" type="password" placeholder="비밀번호" />
+            <input class="input-password" type="password" placeholder="확인" />
+            <input class="input" type="text" placeholder="여기에 적으세요." />
+            <button type="button" class="send-button">작성하기</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   `;
 };
-const fetchData = (search) => {
+
+const fetchData = (search, page) => {
   mainContainer.innerHTML = "";
   fetch(
-    "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+    `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${
+      page ?? 1
+    }`,
     options
-  )
+  ) //page값이 없으면(page 가 undefiend 이면 1을 주겠다): 널병합연산
     .then((response) => response.json())
     .then((response) => {
       // console.log(response);
@@ -119,6 +121,7 @@ function saveReview(event) {
       author,
       review,
       password,
+      createdAt: new Date(),
     };
     const existingReviews = localStorage.getItem(movieTitle);
     let reviews = [];
@@ -134,11 +137,11 @@ function saveReview(event) {
     localStorage.setItem(movieTitle, JSON.stringify(reviews));
 
     // 저장 후, 리뷰를 모달에 추가하고 입력 필드를 비우기
-    const comment = document.querySelector(".comment");
-    comment.querySelector(".name").textContent = author;
-    comment.querySelector(".review").textContent = review;
-    const date = new Date();
-    comment.querySelector(".date").textContent = date.toLocaleString();
+    // const comment = document.querySelector(".comment");
+    // comment.querySelector(".name").textContent = author;
+    // comment.querySelector(".review").textContent = review;
+    // const date = new Date();
+    // comment.querySelector(".date").textContent = date.toLocaleString();
 
     document.querySelector(".input-name").value = "";
     document.querySelector(".input").value = "";
@@ -170,17 +173,22 @@ function updateReviewList() {
       comment.innerHTML += `<div class="review">${data.review}</div>`;
       const datebox = document.createElement("div");
       datebox.classList.add("datebox");
-      datebox.innerHTML = `<div class="date">${new Date().toLocaleString()}</div>`;
+      // datebox.innerHTML = `<div class="date">${data.createdAt}</div>`;
+      datebox.innerHTML = `<div class="date">${new Date(
+        data.createdAt
+      ).toLocaleString()}</div>`;
       comment.appendChild(datebox);
 
       // 추가: 수정 및 삭제 버튼
       const editButton = document.createElement("button");
+      editButton.className = "editButton";
       editButton.textContent = "수정";
       editButton.addEventListener("click", () => editReview(index));
 
       comment.appendChild(editButton);
 
       const deleteButton = document.createElement("button");
+      deleteButton.className = "deleteButton";
       deleteButton.textContent = "삭제";
       deleteButton.addEventListener("click", () => deleteReview(index));
       comment.appendChild(deleteButton);
@@ -265,6 +273,7 @@ const createCards = (item) => {
       item.vote_average,
       item.vote_count
     );
+
     //모달 바디가 생성시 이벤트 추가
     updateReviewList();
     const sendButton = document.querySelector(".send-button");
@@ -285,6 +294,7 @@ const createCards = (item) => {
   newCard.onclick = clickCard;
   mainContainer.append(newCard);
 };
+
 // 영화 리뷰 100자 이내
 function inputCheck(el, maxlength) {
   if (el.value.length > maxlength) {
@@ -298,14 +308,6 @@ function clickSearch() {
   fetchData(search);
 }
 
-function closeModal(event) {
-  if (event.target.id === "modalContainer") modalBody.innerHTML = "";
-}
-
-searchButton.onclick = clickSearch;
-modalBody.onclick = closeModal;
-fetchData();
-
 const searchInput = document.querySelector("#search-input"); // 엔터키설정
 
 searchInput.addEventListener("keyup", function (event) {
@@ -313,3 +315,29 @@ searchInput.addEventListener("keyup", function (event) {
     clickSearch(); // 검색 버튼 클릭과 동일한 동작을 실행
   }
 });
+
+function closeModal(event) {
+  if (event.target.id === "modalContainer") modalBody.innerHTML = "";
+}
+
+for (let i = 1; i < 10; i++) {
+  let button = document.createElement("button");
+  button.textContent = i;
+  button.onclick = () => fetchData(null, i);
+  pageButtonBox.append(button);
+}
+
+let menuEvent = document.getElementById("page-button-box");
+
+menuEvent.addEventListener("mouseover", function (event) {
+  event.target.style.color = "red";
+});
+
+menuEvent.addEventListener("mouseout", function (event) {
+  event.target.style.color = "white";
+});
+
+searchButton.onclick = clickSearch;
+modalBody.onclick = closeModal;
+
+fetchData(null, 1);
