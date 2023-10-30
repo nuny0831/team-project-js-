@@ -71,7 +71,7 @@ const modal = (img, title, overview, voteAverage, voteCount) => {
     </div>
   `)
 }
-// 이 함수가 page가 없을 때 대처를 해놓는게 좋지 어떻게 하나면
+
 const fetchData = (search, page) => {
   mainContainer.innerHTML = '';
   fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page ?? 1}`, options) //page값이 없으면(page 가 undefiend 이면 1을 주겠다) 널병합연산
