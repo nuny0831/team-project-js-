@@ -71,9 +71,10 @@ const modal = (img, title, overview, voteAverage, voteCount) => {
     </div>
   `)
 }
+// 이 함수가 page가 없을 때 대처를 해놓는게 좋지 어떻게 하나면
 const fetchData = (search, page) => {
   mainContainer.innerHTML = '';
-  fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}`, options)
+  fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page ?? 1}`, options) //page값이 없으면(page 가 undefiend 이면 1을 주겠다) 널병합연산
     .then(response => response.json())
     .then(response => {
       // console.log(response);
@@ -288,6 +289,14 @@ function clickSearch() {
   fetchData(search);
 }
 
+const searchInput = document.querySelector("#search-input"); // 엔터키설정
+
+searchInput.addEventListener("keyup", function (event) {
+  if (event.key === "Enter") {
+    clickSearch(); // 검색 버튼 클릭과 동일한 동작을 실행
+  }
+});
+
 function closeModal(event) {
   if (event.target.id === 'modalContainer') modalBody.innerHTML = '';
 }
@@ -309,14 +318,6 @@ menuEvent.addEventListener("mouseover", function (event) {
 menuEvent.addEventListener("mouseout", function(event){
   event.target.style.color = "white";
 })
-
-const searchInput = document.querySelector("#search-input"); // 엔터키설정
-
-searchInput.addEventListener("keyup", function (event) {
-  if (event.key === "Enter") {
-    clickSearch(); // 검색 버튼 클릭과 동일한 동작을 실행
-  }
-});
 
 searchButton.onclick = clickSearch;
 modalBody.onclick = closeModal;
