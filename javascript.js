@@ -51,9 +51,9 @@ const modal = (img, title, overview, voteAverage, voteCount) => {
           <div class="review-box">
             <div class="comment">
               <div class="userinfo">
-                <div class="name">name</div>
+                <div class="name"></div>
               </div>
-              <div class="review">리뷰 작성 test</div>
+              <div class="review"></div>
               <div class="datebox">
                 <div clas="date"> </div>
               </div>
