@@ -194,7 +194,8 @@ body {
 
 .edit-review-input {
   background-color: inherit;
-  border: 0;
+  border: 1px solid white;
+  border-radius: 3px;
   font-size: 15px;
   width: 350px;
 }
