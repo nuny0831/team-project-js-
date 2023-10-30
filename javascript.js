@@ -14,9 +14,9 @@ const searchButton = document.querySelector('#search-button');
 const modalBody = document.querySelector('#modal-body');
 const pageButtonBox = document.querySelector('#page-button-box');
 const summaryOverview = (overview) => {
-  let max = 200; // 표시할 글자수 기준 => 200자 추천하기
+  let max = 200; 
   if (overview.length > max) {
-    overview =
+    overview = 
       overview.substr(0, max - 2) +
       `...
        더보기`;
@@ -61,8 +61,8 @@ const modal = (img, title, overview, voteAverage, voteCount) => {
           </div>
           <div class="comment-input-box">
             <input class="input-name" type="text" placeholder="이름" />
-            <input class="input-password" type="text" placeholder="비밀번호" />
-            <input class="input-password" type="text" placeholder="확인" />
+            <input class="input-password" type="password" placeholder="비밀번호" />
+            <input class="input-password" type="password" placeholder="확인" />
             <input class="input" type="text" placeholder="여기에 적으세요." />
             <button type="button" class="send-button">작성하기</button>
           </div>
