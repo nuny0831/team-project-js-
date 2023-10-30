@@ -167,12 +167,11 @@ a {
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&family=Lato&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&family=Lato&display=swap');
 .imgSlider {
   height: 400px;
   background-color: antiquewhite;
   margin-bottom: 50px;
-  /* opacity: 1.0; */
   background-image: linear-gradient(to right, black, rgb(63, 63, 63) 70%, rgb(199, 199, 199));
 }
 .imgText {
@@ -244,4 +243,4 @@ a {
   line-height: 1.5em;
   margin-top: 10px;
   padding-top: 20px;
-}
+} */
