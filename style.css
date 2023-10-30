@@ -120,6 +120,36 @@ a {
   font-size: 18px;
 }
 
+#page-button-box > button {
+  color: white;
+  background-color: black;
+  margin: 20px 0 10px 0;
+  padding-left: 15px;
+  font-size: 25px;
+  border: 0;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.page-box {
+  display: flex;
+  justify-content: center;
+}
+
+/* #page-button-box > button {
+  color: white;
+  background-color: black;
+  margin: 20px 0 10px 0;
+  padding-left: 15px;
+  font-size: 25px;
+  border: 0;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.page-box {
+  display: flex;
+  justify-content: center;
+} */
+
 /* 반응형 그리드 */
 @media screen and (min-width: 10px) {
   .main-container {

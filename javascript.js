@@ -15,7 +15,7 @@ const searchButton = document.querySelector("#search-button");
 const modalBody = document.querySelector("#modal-body");
 // 영화 설명 문자열 줄이기 (...)
 const summaryOverview = (overview) => {
-  let max = 300; // 표시할 글자수 기준
+  let max = 200; // 표시할 글자수 기준
   if (overview.length > max) {
     overview =
       overview.substr(0, max - 2) +
@@ -177,6 +177,7 @@ function updateReviewList() {
       const editButton = document.createElement("button");
       editButton.textContent = "수정";
       editButton.addEventListener("click", () => editReview(index));
+
       comment.appendChild(editButton);
 
       const deleteButton = document.createElement("button");
