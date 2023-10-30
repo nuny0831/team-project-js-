@@ -1,22 +1,23 @@
-const prePath = 'https://image.tmdb.org/t/p/w500';
+const prePath = "https://image.tmdb.org/t/p/w500";
 
 const options = {
-  method: 'GET',
+  method: "GET",
   headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MWEzYmZjYmQxN2RkMDdhOTliYjk0NGI4N2E4Y2NhOCIsInN1YiI6IjY1MzEwYmNkZjE3NTljMDBjNWM0N2RlYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.l_eNJVJeWDsjOwjRISRpNGpzZD4CO7nT44WdPD7itss'
-  }
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MWEzYmZjYmQxN2RkMDdhOTliYjk0NGI4N2E4Y2NhOCIsInN1YiI6IjY1MzEwYmNkZjE3NTljMDBjNWM0N2RlYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.l_eNJVJeWDsjOwjRISRpNGpzZD4CO7nT44WdPD7itss",
+  },
 };
 
-const mainContainer = document.querySelector('#main-container');
-const baseCard = document.querySelector('#base-card');
-const searchButton = document.querySelector('#search-button');
-const modalBody = document.querySelector('#modal-body');
-const pageButtonBox = document.querySelector('#page-button-box');
+const mainContainer = document.querySelector("#main-container");
+const baseCard = document.querySelector("#base-card");
+const searchButton = document.querySelector("#search-button");
+const modalBody = document.querySelector("#modal-body");
+const pageButtonBox = document.querySelector("#page-button-box");
 const summaryOverview = (overview) => {
-  let max = 200; 
+  let max = 200;
   if (overview.length > max) {
-    overview = 
+    overview =
       overview.substr(0, max - 2) +
       `...
        더보기`;
@@ -25,7 +26,7 @@ const summaryOverview = (overview) => {
   return overview;
 };
 const modal = (img, title, overview, voteAverage, voteCount) => {
-  return (`
+  return `
     <div id="modalContainer" class="mainModule">
       <div id="modalContent" class="module">
         <div class="module-head">
@@ -69,14 +70,19 @@ const modal = (img, title, overview, voteAverage, voteCount) => {
         </div>
       </div>
     </div>
-  `)
-}
+  `;
+};
 
 const fetchData = (search, page) => {
-  mainContainer.innerHTML = '';
-  fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page ?? 1}`, options) //page값이 없으면(page 가 undefiend 이면 1을 주겠다): 널병합연산
-    .then(response => response.json())
-    .then(response => {
+  mainContainer.innerHTML = "";
+  fetch(
+    `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${
+      page ?? 1
+    }`,
+    options
+  ) //page값이 없으면(page 가 undefiend 이면 1을 주겠다): 널병합연산
+    .then((response) => response.json())
+    .then((response) => {
       // console.log(response);
       response.results.forEach((item) => {
         // console.log(item);
@@ -91,8 +97,8 @@ const fetchData = (search, page) => {
         }
       });
     })
-    .catch(err => console.error(err));
-}
+    .catch((err) => console.error(err));
+};
 
 // 모달창에서 localStorage를 사용하여 작성자, 리뷰, 확인 비밀번호를 저장하는 함수
 function saveReview(event) {
@@ -115,6 +121,7 @@ function saveReview(event) {
       author,
       review,
       password,
+      ceartedAt: new Date(),
     };
     const existingReviews = localStorage.getItem(movieTitle);
     let reviews = [];
@@ -130,11 +137,11 @@ function saveReview(event) {
     localStorage.setItem(movieTitle, JSON.stringify(reviews));
 
     // 저장 후, 리뷰를 모달에 추가하고 입력 필드를 비우기
-    const comment = document.querySelector(".comment");
-    comment.querySelector(".name").textContent = author;
-    comment.querySelector(".review").textContent = review;
-    const date = new Date();
-    comment.querySelector(".date").textContent = date.toLocaleString();
+    // const comment = document.querySelector(".comment");
+    // comment.querySelector(".name").textContent = author;
+    // comment.querySelector(".review").textContent = review;
+    // const date = new Date();
+    // comment.querySelector(".date").textContent = date.toLocaleString();
 
     document.querySelector(".input-name").value = "";
     document.querySelector(".input").value = "";
@@ -166,19 +173,21 @@ function updateReviewList() {
       comment.innerHTML += `<div class="review">${data.review}</div>`;
       const datebox = document.createElement("div");
       datebox.classList.add("datebox");
-      datebox.innerHTML = `<div class="date">${new Date().toLocaleString()}</div>`;
+      datebox.innerHTML = `<div class="date">${new Date(
+        data.createdAt
+      ).toLocaleString()}</div>`;
       comment.appendChild(datebox);
 
       // 추가: 수정 및 삭제 버튼
       const editButton = document.createElement("button");
-      editButton.className = 'editButton';
+      editButton.className = "editButton";
       editButton.textContent = "수정";
       editButton.addEventListener("click", () => editReview(index));
 
       comment.appendChild(editButton);
 
       const deleteButton = document.createElement("button");
-      deleteButton.className = 'deleteButton';
+      deleteButton.className = "deleteButton";
       deleteButton.textContent = "삭제";
       deleteButton.addEventListener("click", () => deleteReview(index));
       comment.appendChild(deleteButton);
@@ -256,23 +265,31 @@ function deleteReview(index) {
 
 const createCards = (item) => {
   const clickCard = () => {
-    modalBody.innerHTML = modal(item.backdrop_path, item.title, item.overview, item.vote_average, item.vote_count);
- 
-        //모달 바디가 생성시 이벤트 추가
-        updateReviewList();
-        const sendButton = document.querySelector(".send-button");
-        sendButton.addEventListener("click", saveReview);
-        const textInput = document.querySelector(".input"); // input 텍스트박스에 이벤트 추가.
-        textInput.addEventListener("input", function () {
-          inputCheck(this, 100); // 100 = 두번째 인자값이 10이면 10자 제한, 100이면 100자 제한
-        });
+    modalBody.innerHTML = modal(
+      item.backdrop_path,
+      item.title,
+      item.overview,
+      item.vote_average,
+      item.vote_count
+    );
+
+    //모달 바디가 생성시 이벤트 추가
+    updateReviewList();
+    const sendButton = document.querySelector(".send-button");
+    sendButton.addEventListener("click", saveReview);
+    const textInput = document.querySelector(".input"); // input 텍스트박스에 이벤트 추가.
+    textInput.addEventListener("input", function () {
+      inputCheck(this, 100); // 100 = 두번째 인자값이 10이면 10자 제한, 100이면 100자 제한
+    });
   };
 
   const newCard = baseCard.cloneNode(true);
-  newCard.querySelector('.movieimg').src = prePath + item.backdrop_path;
-  newCard.querySelector('.movie-title').append(item.title);
-  newCard.querySelector('.rating').append(`평점 ${item.vote_average} (${item.vote_count.toLocaleString()})`);
-  newCard.querySelector('.description').append(summaryOverview(item.overview));
+  newCard.querySelector(".movieimg").src = prePath + item.backdrop_path;
+  newCard.querySelector(".movie-title").append(item.title);
+  newCard
+    .querySelector(".rating")
+    .append(`평점 ${item.vote_average} (${item.vote_count.toLocaleString()})`);
+  newCard.querySelector(".description").append(summaryOverview(item.overview));
   newCard.onclick = clickCard;
   mainContainer.append(newCard);
 };
@@ -285,9 +302,8 @@ function inputCheck(el, maxlength) {
   }
 }
 
-
 function clickSearch() {
-  const search = document.querySelector('#search-input').value;
+  const search = document.querySelector("#search-input").value;
   fetchData(search);
 }
 
@@ -300,30 +316,27 @@ searchInput.addEventListener("keyup", function (event) {
 });
 
 function closeModal(event) {
-  if (event.target.id === 'modalContainer') modalBody.innerHTML = '';
+  if (event.target.id === "modalContainer") modalBody.innerHTML = "";
 }
 
 for (let i = 1; i < 10; i++) {
-  let button = document.createElement('button');
+  let button = document.createElement("button");
   button.textContent = i;
   button.onclick = () => fetchData(null, i);
   pageButtonBox.append(button);
 }
 
-let menuEvent = document.getElementById("page-button-box"); 
+let menuEvent = document.getElementById("page-button-box");
 
 menuEvent.addEventListener("mouseover", function (event) {
   event.target.style.color = "red";
 });
 
-
-menuEvent.addEventListener("mouseout", function(event){
+menuEvent.addEventListener("mouseout", function (event) {
   event.target.style.color = "white";
-})
+});
 
 searchButton.onclick = clickSearch;
 modalBody.onclick = closeModal;
 
-
 fetchData(null, 1);
-
