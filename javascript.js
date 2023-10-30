@@ -74,7 +74,7 @@ const modal = (img, title, overview, voteAverage, voteCount) => {
 
 const fetchData = (search, page) => {
   mainContainer.innerHTML = '';
-  fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page ?? 1}`, options) //page값이 없으면(page 가 undefiend 이면 1을 주겠다) 널병합연산
+  fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page ?? 1}`, options) //page값이 없으면(page 가 undefiend 이면 1을 주겠다): 널병합연산
     .then(response => response.json())
     .then(response => {
       // console.log(response);
@@ -171,12 +171,14 @@ function updateReviewList() {
 
       // 추가: 수정 및 삭제 버튼
       const editButton = document.createElement("button");
+      editButton.className = 'editButton';
       editButton.textContent = "수정";
       editButton.addEventListener("click", () => editReview(index));
 
       comment.appendChild(editButton);
 
       const deleteButton = document.createElement("button");
+      deleteButton.className = 'deleteButton';
       deleteButton.textContent = "삭제";
       deleteButton.addEventListener("click", () => deleteReview(index));
       comment.appendChild(deleteButton);
